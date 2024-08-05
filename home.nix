@@ -39,6 +39,6 @@ in
   home.file.".megaCmd/excluded".text = ''
     Thumbs.db
     desktop.ini
-    ~*
+    ~.*
   '';
 }
