@@ -21,5 +21,13 @@
   home.packages = with pkgs; [
     devenv
     emacs
+    chemacs2
   ];
+
+  home.file.".emacs.d".source = pkgs.chemacs2 + "/share/site-lisp/chemacs2";
+
+  home.file.".emacs-profiles".text = ''
+    (("default" . ((user-emacs-directory . "/home/rfhayashi/dev/emacs.d")
+                   (straight-p . t))))
+  '';
 }
