@@ -26,6 +26,7 @@ in
     devenv
     emacs
     chemacs2
+    megacmd
   ];
 
   home.file.".emacs.d".source = pkgs.chemacs2 + "/share/site-lisp/chemacs2";
