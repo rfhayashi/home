@@ -8,6 +8,16 @@
 
   programs.home-manager.enable = true;
 
+  programs.git = {
+    enable = true;
+    userName = "Rui Fernando Hayashi";
+    userEmail="rfhayashi@gmail.com";
+    signing = {
+      signByDefault = true;
+      key = "rfhayashi@gmail.com";
+    };    
+  };
+
   home.packages = with pkgs; [
     devenv
     emacs
