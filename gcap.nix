@@ -1,15 +1,19 @@
-{ stdenv, lib, fetchzip, makeWrapper, openjdk, coreutils, bash, ... } :
+{ stdenv, lib, fetchzip, makeWrapper, makeDesktopItem, copyDesktopItems, openjdk, coreutils, bash, ... } :
+
+let
+  version = "1.2";
+in
 
 stdenv.mkDerivation (finalAttrs: {
-  pname = "gcap";
-  version = "1.2";
+  pname = "gcap2024";
+  version = "${version}";
 
   src = fetchzip {
-    url = "https://downloadirpf.receita.fazenda.gov.br/irpf/2024/gcap/GCAP2024v1.2.zip";
+    url = "https://downloadirpf.receita.fazenda.gov.br/irpf/2024/gcap/GCAP2024v${version}.zip";
     sha256 = "sha256-c6JzAnm/fRF9ppc/FYrJCv4zq9mhqln97vf/aTi3scU=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [ makeWrapper copyDesktopItems ];
 
   installPhase = ''
     runHook preInstall
@@ -20,7 +24,17 @@ stdenv.mkDerivation (finalAttrs: {
     ${openjdk}/bin/java -Xmx2048M -jar $out/GCAP.jar
     EOF
     chmod +x $out/bin/gcap
+    copyDesktopItems
     runHook postInstall
   '';
+
+  desktopItems = [
+    (makeDesktopItem {
+      name = "gcap";
+      exec = "gcap";
+      desktopName = "GCAP 2024";
+      genericName = "GCAP 2024";
+    })
+  ];
 
 })

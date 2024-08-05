@@ -3,6 +3,7 @@
 let
   username = "rfhayashi";
   homeDir = "/home/" + username;
+  gcap = pkgs.callPackage ./gcap.nix {};
 in
 {
   home.username = username;
@@ -27,6 +28,7 @@ in
     emacs
     chemacs2
     megacmd
+    gcap
   ];
 
   home.file.".emacs.d".source = pkgs.chemacs2 + "/share/site-lisp/chemacs2";
