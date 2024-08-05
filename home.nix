@@ -35,4 +35,10 @@ in
     (("default" . ((user-emacs-directory . "${homeDir}/dev/emacs.d")
                    (straight-p . t))))
   '';
+
+  home.file.".megaCmd/excluded".text = ''
+    Thumbs.db
+    desktop.ini
+    ~*
+  '';
 }
