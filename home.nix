@@ -1,8 +1,12 @@
 { config, pkgs, ...}:
 
+let
+  username = "rfhayashi";
+  homeDir = "/home/" + username;
+in
 {
-  home.username = "rfhayashi";
-  home.homeDirectory = "/home/rfhayashi";
+  home.username = username;
+  home.homeDirectory = homeDir;
 
   home.stateVersion = "24.05";
 
@@ -27,7 +31,7 @@
   home.file.".emacs.d".source = pkgs.chemacs2 + "/share/site-lisp/chemacs2";
 
   home.file.".emacs-profiles".text = ''
-    (("default" . ((user-emacs-directory . "/home/rfhayashi/dev/emacs.d")
+    (("default" . ((user-emacs-directory . "${homeDir}/dev/emacs.d")
                    (straight-p . t))))
   '';
 }
