@@ -30,6 +30,7 @@ in
     chemacs2
     megacmd
     gcap
+    discord
   ];
 
   home.file.".bashrc".source = ./bashrc;
