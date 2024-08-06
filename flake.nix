@@ -13,14 +13,15 @@
         system = "x86_64-linux";
       };
     in
-      {
-        homeConfigurations = {
-          rfhayashi = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            modules = [
-              ./home.nix
-            ];
-          };
+    {
+      homeConfigurations = {
+        rfhayashi = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home.nix
+          ];
         };
       };
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+    };
 }

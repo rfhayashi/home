@@ -1,6 +1,6 @@
-{ stdenv, fetchzip, makeDesktopItem, copyDesktopItems, openjdk, bash, ... } :
+{ stdenv, fetchzip, makeDesktopItem, copyDesktopItems, openjdk, bash, ... }:
 
-stdenv.mkDerivation (finalAttrs:{
+stdenv.mkDerivation (finalAttrs: {
   pname = "gcap2024";
   version = "1.2";
 

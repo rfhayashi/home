@@ -1,9 +1,9 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
 let
   username = "rfhayashi";
   homeDir = "/home/" + username;
-  gcap = pkgs.callPackage ./gcap.nix {};
+  gcap = pkgs.callPackage ./gcap.nix { };
 in
 {
   home.username = username;
@@ -16,11 +16,11 @@ in
   programs.git = {
     enable = true;
     userName = "Rui Fernando Hayashi";
-    userEmail="rfhayashi@gmail.com";
+    userEmail = "rfhayashi@gmail.com";
     signing = {
       signByDefault = true;
       key = "rfhayashi@gmail.com";
-    };    
+    };
   };
 
   home.packages = with pkgs; [
