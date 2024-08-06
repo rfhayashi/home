@@ -33,7 +33,7 @@ in
 
   home.file.".emacs.d".source = pkgs.chemacs2 + "/share/site-lisp/chemacs2";
 
-  home.file.".emacs-profiles".text = ''
+  home.file.".emacs-profiles.el".text = ''
     (("default" . ((user-emacs-directory . "${homeDir}/dev/emacs.d")
                    (straight-p . t))))
   '';
