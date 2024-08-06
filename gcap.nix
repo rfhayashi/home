@@ -1,4 +1,4 @@
-{ stdenv, fetchzip, makeWrapper, makeDesktopItem, copyDesktopItems, openjdk, bash, ... } :
+{ stdenv, fetchzip, makeDesktopItem, copyDesktopItems, openjdk, bash, ... } :
 
 stdenv.mkDerivation (finalAttrs:{
   pname = "gcap2024";
@@ -9,7 +9,7 @@ stdenv.mkDerivation (finalAttrs:{
     sha256 = "sha256-c6JzAnm/fRF9ppc/FYrJCv4zq9mhqln97vf/aTi3scU=";
   };
 
-  nativeBuildInputs = [ makeWrapper copyDesktopItems ];
+  nativeBuildInputs = [ copyDesktopItems ];
 
   installPhase = ''
     runHook preInstall
