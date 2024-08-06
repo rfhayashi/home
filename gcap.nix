@@ -1,15 +1,11 @@
-{ stdenv, lib, fetchzip, makeWrapper, makeDesktopItem, copyDesktopItems, openjdk, coreutils, bash, ... } :
+{ stdenv, fetchzip, makeWrapper, makeDesktopItem, copyDesktopItems, openjdk, bash, ... } :
 
-let
-  version = "1.2";
-in
-
-stdenv.mkDerivation (finalAttrs: {
+stdenv.mkDerivation (finalAttrs:{
   pname = "gcap2024";
-  version = "${version}";
+  version = "1.2";
 
   src = fetchzip {
-    url = "https://downloadirpf.receita.fazenda.gov.br/irpf/2024/gcap/GCAP2024v${version}.zip";
+    url = "https://downloadirpf.receita.fazenda.gov.br/irpf/2024/gcap/GCAP2024v${finalAttrs.version}.zip";
     sha256 = "sha256-c6JzAnm/fRF9ppc/FYrJCv4zq9mhqln97vf/aTi3scU=";
   };
 
