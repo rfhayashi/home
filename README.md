@@ -46,6 +46,8 @@ exit
 
 ### Switch home-manager configuration
 
+Note: delete `.bashrc` file if there is one.
+
 ```
 cd home
 home-manager switch --flake .

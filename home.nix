@@ -24,12 +24,15 @@ in
   };
 
   home.packages = with pkgs; [
+    direnv
     devenv
     emacs
     chemacs2
     megacmd
     gcap
   ];
+
+  home.file.".bashrc".source = ./bashrc;
 
   home.file.".emacs.d".source = pkgs.chemacs2 + "/share/site-lisp/chemacs2";
 
