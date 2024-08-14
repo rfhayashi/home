@@ -48,4 +48,12 @@ in
     desktop.ini
     ~.*
   '';
+
+  home.file.".clojure/injections".source = ./clojure/injections;
+
+  home.file.".clojure/deps.edn".text = ''
+  {
+    :aliases {:user {:extra-deps {global/user {:local/root "${homeDir}/.clojure/injections"}}}}
+  }
+  '';
 }
