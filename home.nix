@@ -4,6 +4,7 @@ let
   username = "rfhayashi";
   homeDir = "/home/" + username;
   gcap = pkgs.callPackage ./gcap.nix { };
+  portalVersion = "0.57.2";
 in
 {
   home.username = username;
@@ -52,8 +53,21 @@ in
   home.file.".clojure/injections".source = ./clojure/injections;
 
   home.file.".clojure/deps.edn".text = ''
-  {
-    :aliases {:user {:extra-deps {global/user {:local/root "${homeDir}/.clojure/injections"}}}}
-  }
+    {
+      :aliases {:user {:extra-deps {global/user {:local/root "${homeDir}/.clojure/injections"}
+                                    djblue/portal {:mvn/version "${portalVersion}"}}}}
+    }
+  '';
+
+  home.file.".lein/profiles.clj".text = ''
+    {:user {:dependencies [[djblue/portal "${portalVersion}"]]
+            :injections [(load-file "${homeDir}/.clojure/injections/src/tap.clj")
+                         (alter-var-root #'default-data-readers
+                                         (fn [v]
+                                           (-> v
+                                               (assoc 'tap #'tap/>-reader)
+                                               (assoc 'tapd #'tap/d-reader))))
+                         (require 'portal.api)
+                         (portal.api/tap)]}}
   '';
 }
