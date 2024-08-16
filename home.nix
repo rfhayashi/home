@@ -70,4 +70,6 @@ in
                          (require 'portal.api)
                          (portal.api/tap)]}}
   '';
+
+  home.file.".config/stumpwm/config".source = ./stumpwm/config;
 }
