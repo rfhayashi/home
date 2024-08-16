@@ -1,6 +1,0 @@
-(in-package :stumpwm)
-
-;; set prefix key to super
-(run-shell-command "xmodmap -e 'clear mod4'" t)
-(run-shell-command "xmodmap -e \'keycode 133 = F20\'" t)
-(set-prefix-key (kbd "F20"))

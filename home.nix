@@ -71,5 +71,4 @@ in
                          (portal.api/tap)]}}
   '';
 
-  home.file.".config/stumpwm/config".source = ./stumpwm/config;
 }
