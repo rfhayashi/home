@@ -25,11 +25,13 @@ in
     };
   };
 
+  programs.emacs = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
     direnv
     devenv
-    emacs
-    chemacs2
     megacmd
     gcap
     discord
